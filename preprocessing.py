@@ -17,6 +17,9 @@ X_reshaped = X.reshape(-1, X.shape[2]) # (30000, 5)
 # fit the scaler for all the data
 X_scaled = scaler.fit_transform(X_reshaped)
 
+# to original dimension
+X = X_scaled.reshape(X.shape)
+
 # convert to the original dimension
 # split the data to %80 train, %20 tesst 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.2, random_state=42, stratify= y)

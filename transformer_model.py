@@ -10,7 +10,7 @@ class TransformerClassifier(nn.Module):
         self.input_proj = nn.Linear(input_dim, model_dim)
 
         # positional embedding 
-        self.pos_emgedding = nn.Parameter(torch.randn(1, 20, model_dim))
+        self.pos_embedding = nn.Parameter(torch.randn(1, 20, model_dim))
 
         # transformer encoder block
         encoder_layer = nn.TransformerEncoderLayer(
@@ -37,7 +37,7 @@ class TransformerClassifier(nn.Module):
     def forward(self, X):
         X = self.input_proj(X) #(batch, seq, model_dim)
 
-        X = X + self.pos_emgedding # position info (batch, seq, model_dim)
+        X = X + self.pos_embedding # position info (batch, seq, model_dim)
 
         X = self.transformer_encoder(X) #(batch, seq, model_dim)
 
