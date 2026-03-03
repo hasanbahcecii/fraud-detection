@@ -76,7 +76,7 @@ labels = np.array(labels)
 indices = np.arange(total_samples)
 np.random.shuffle(indices)
 data = data[indices]
-labels = data[indices]
+labels = labels[indices]
 
 # save data
 np.save("X_fraud.npy", data)
