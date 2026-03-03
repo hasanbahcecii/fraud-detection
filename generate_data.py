@@ -43,9 +43,9 @@ for _ in range(n_samples_per_class):
     # low or random spending, shallow scrolling, rare cart events
     click_count = np.random.normal(loc=10, scale=3, size=sequence_length)   # excessive clicking
     page_duration = np.random.normal(loc=1, scale=0.5, size=sequence_length)  # almost no time spent
-    amount_spent = np.zeros(size=sequence_length)   # no spending
+    amount_spent = np.zeros(sequence_length)   # no spending
     scroll_depth = np.random.normal(loc=10, scale=5, size=sequence_length)  # barely scrolling
-    cart_events = np.zeros(size=sequence_length)          # no cart activity
+    cart_events = np.zeros(sequence_length)          # no cart activity
 
     sample = np.stack([click_count, page_duration, amount_spent, scroll_depth, cart_events], axis=1)
     data.append(sample)
@@ -83,4 +83,7 @@ np.save("X_fraud.npy", data)
 np.save("y_fraud.npy", labels)
 
 # alternatively save as csv
-df = pd.DataFrame(data[0], columns= [])
+df = pd.DataFrame(data[0], columns= ["click_xount", "page_duration", "amount_spent", "scroll_depth", "cart_events"])
+df["step"] = range(1, sequence_length + 1)
+print("Sample data: ")
+print(df)
