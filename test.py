@@ -17,6 +17,7 @@ model.eval()
 
 all_preds = []
 all_labels = []
+target_names = ["normal user", "bot", "fraudster"]
 
 with torch.no_grad():
     for inputs, labels in test_loader:
@@ -26,14 +27,14 @@ with torch.no_grad():
         all_preds.extend(predicted.cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
 
-# classification report
-print("Classification Report:")
-print(classification_report(all_labels, all_preds))
+# classification report 
+print("Classification Report:") 
+print(classification_report(all_labels, all_preds, labels=[0,1,2], target_names=target_names))
 
 # confusion matrix
 cm = confusion_matrix(all_labels, all_preds)
 plt.figure(figsize=(6, 5))
-sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=target_names, yticklabels=target_names)
 plt.xlabel("Predicted")
 plt.ylabel("True")
 plt.title("Confusion Matrix")
