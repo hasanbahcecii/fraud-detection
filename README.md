@@ -130,12 +130,13 @@ python test_api.py
 
 streamlit run app_streamlit.py
 ```
+
 ---
 
 ## 📈 Expected Outcome
 
-A Transformer-based fraud detection system capable of classifying user behavior into normal, bot, or fraudster categories with high accuracy.
-This approach leverages sequential modeling power of Transformers to capture temporal dependencies in user actions.
+- A Transformer-based fraud detection system capable of classifying user behavior into normal, bot, or fraudster categories with high accuracy.
+- This approach leverages sequential modeling power of Transformers to capture temporal dependencies in user actions.
 
 ---
 
