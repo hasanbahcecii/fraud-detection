@@ -48,40 +48,97 @@ By analyzing these behavioral features across time steps, the model will learn t
 ```
 fraud-detection-transformer/
 │
-├── generatedata.py        # Synthetic dataset generation
+├── generate_data.py        # Synthetic dataset generation
 ├── preprocessing.py       # Data cleaning & preprocessing
 ├── transformer_model.py   # Transformer architecture
 ├── train.py               # Training pipeline
 ├── test.py                # Model evaluation
+├── main_api.py            # FastAPI service
+├── test_api.py            # FastAPI request testing
+├── app_streamlit.py       # Streamlit web app
 └── requirements.txt       # Dependencies
 ```
 
 ---
 
-## ⚙️ Installation
-To set up the environment, install the required libraries:
+## ⚙️ Setup
+
+Clone the repository:
 
 ```bash
-pip install numpy pandas matplotlib scikit-learn torch tqdm seaborn
+
+git clone git@github.com:hasanbahcecii/traffic-volume-forecasting.git
+cd traffic-volume-forecasting
+```
+Create and activate a virtual environment:
+
+```bash
+
+python3 -m venv venv
+source venv/bin/activate
+```
+Install dependencies:
+
+```bash
+
+pip install -r requirements.txt
 ```
 
 ---
 
-## 🚀 Plan
+## 🚀 Usage
 
-1. Data Generation → Create synthetic dataset with user actions.
+**Data Analysis**
 
-2. Preprocessing → Normalize, encode, and prepare sequences.
+```bash
 
-3. Modeling → Implement a Transformer-based classifier in PyTorch.
+python load_and_explore.py
+```
+**Preprocessing**
 
-4. Training → Train the model on the dataset.
+```bash
 
-5. Testing → Evaluate performance on unseen samples.
+python preprocessing.py
+```
+**Model Training**
 
+```bash
+
+python train.py
+```
+**Model Testing**
+
+```bash
+
+python test.py
+```
+**Run FastAPI Service**
+
+```bash
+
+uvicorn main_api:app --reload
+```
+**Test FastAPI Requests**
+
+```bash
+
+python test_api.py
+```
+**Launch Streamlit App**
+
+```bash
+
+streamlit run app_streamlit.py
+```
 ---
 
 ## 📈 Expected Outcome
 
 A Transformer-based fraud detection system capable of classifying user behavior into normal, bot, or fraudster categories with high accuracy.
 This approach leverages sequential modeling power of Transformers to capture temporal dependencies in user actions.
+
+---
+
+## 📜 License
+
+MIT
