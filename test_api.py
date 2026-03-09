@@ -1,0 +1,26 @@
+import requests
+import numpy as np
+
+# Load test dataset
+X_test = np.load("X_fraud.npy")
+
+# Take one sample
+sample_index = 0
+sample = X_test[sample_index]  # shape (20, 5)
+
+# Prepare payload
+payload = {"sequence": sample.tolist()}
+
+# API URL
+url = "http://127.0.0.1:8000/predict"
+
+try:
+    response = requests.post(url, json=payload)
+    if response.status_code == 200:
+        result = response.json()
+        print(f"Predicted class: {result['prediction']} ({result['class_name']})")
+    else:
+        print(f"Error code: {response.status_code}")
+        print(f"Error message: {response.text}")
+except requests.exceptions.ConnectionError:
+    print("The API server is not responding. Please start FastAPI!")
